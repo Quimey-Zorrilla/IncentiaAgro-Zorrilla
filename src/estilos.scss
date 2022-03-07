@@ -42,9 +42,24 @@ svg {
 svg:hover{
     color: black;
 }
-h2{
+.contenedor{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 250px;
+    height: 150px;
     text-align: center;
-    color: black;
-    font-size: x-large;
-    font-family: cursive;
+    margin-left: 40%;
+    margin-top: 50px;
+
+    span, button{
+        font-family: sans-serif;
+        font-weight: bold;
+        font-size:medium;
+    }
+    button{
+        background-color:#FADEBA;
+        color:black;
+        border-color: #FD8C04;
+    }
 }
