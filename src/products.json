@@ -1,0 +1,27 @@
+[
+    {
+        "id": "1",
+        "name": "MAXIMIZE",
+        "price": 1000
+    },
+    {
+        "id": "2",
+        "name": "AMINO 26",
+        "price": 2000
+    },
+    {
+        "id": "3",
+        "name": "CUPRUM",
+        "price": 3000
+    },
+    {
+        "id": "4",
+        "name": "EFFIK ONE",
+        "price": 4000
+    },
+    {
+        "id": "5",
+        "name": "CABZN PLUS",
+        "price": 5000
+    }
+]
