@@ -1,6 +1,7 @@
 import ItemCount from "./ItemCount";
 import ItemList from './ItemList';
 import products from '../products.json';
+import ItemDetailContainer from "./ItemDetailContainer";
 
 function ItemListContainer({greetings}) {
 
@@ -17,6 +18,9 @@ function ItemListContainer({greetings}) {
                 <div>
                     <h2>INCENTIA cuenta con amplia gama de productos organicos</h2>
                     <ItemList list={products} />
+                </div>
+                <div>
+                    <ItemDetailContainer productList={products}/>
                 </div>
             </main>
         </>
