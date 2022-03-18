@@ -1,19 +1,21 @@
-import producto from "../assets/producto.jpg";
+import React from 'react';
 
-const ItemDetail = ({item}) => {
-
-    const {name, copy, price} = item;
-
-    return(
-        <div>
-            <img src={producto}/>
-            <p>{name}</p>
-            <p>{copy}</p>
-            <h4>
-                <span>Precio del producto ${price}</span>
-            </h4>
+export const ItemDetail = ({
+    id,
+    nombre,
+    categoria,
+    image,
+    descripcion,
+    precio,
+}) => {
+    return (
+        <div className="detail-row">
+        <img src={image} alt={`${id}-${nombre}`} className="flex-col" />
+        <section className="flex-col">
+            <h1>{nombre}</h1>
+            <p>{descripcion}</p>
+            <h2>${precio}</h2>
+        </section>
         </div>
-    )
-}
-
-export default ItemDetail;
+    );
+};

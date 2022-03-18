@@ -1,26 +1,34 @@
-import { useState, useEffect } from 'react';
-import {FaSpinner} from 'react-icons/fa';
-import ItemDetail from './ItemDetail';
+import React, { useState, useEffect } from 'react';
+import { ItemDetail } from './ItemDetail';
+import { data } from '../pages/data';
+import { useParams } from 'react-router-dom';
 
-const ItemDetailContainer = ({productList}) => {
+export const ItemDetailContainer = () => {
+    const [producto, setProducto] = useState({});
+    const [loading, setLoading] = useState(true);
 
-    const [product, setProduct] = useState ({})
-    const [loading, setLoading] = useState ({})
+    const { itemId } = useParams();
 
-    useEffect (() => {
+    console.log(itemId);
 
-        setTimeout (() => {
-            setProduct (productList [0]);
-            setLoading (false);
-        },2000)
-    })
+    useEffect(() => {
+        setLoading(true);
+        const getItems = new Promise((resolve) => {
+            setTimeout(() => {
+            const myData = data.find((item) => item.id === itemId);
 
-    return (
-        <div>
-            <h2>Detalles del producto:</h2>
-            {loading ? <FaSpinner/> : <ItemDetail item={product}/>}
-        </div>
-    )
-}
+            resolve(myData);
+            }, 2000);
+        });
+
+        getItems
+            .then((res) => {
+            setProducto(res);
+            })
+            .finally(() => setLoading(false));
+    }, [itemId]);
+
+    return loading ? <h2>CARGANDO...</h2> : <ItemDetail {...producto} />;
+};
 
 export default ItemDetailContainer;

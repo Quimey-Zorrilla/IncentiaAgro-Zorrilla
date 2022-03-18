@@ -1,30 +1,37 @@
-import ItemCount from "./ItemCount";
-import ItemList from './ItemList';
-import products from '../products.json';
-import ItemDetailContainer from "./ItemDetailContainer";
+import React, { useState, useEffect } from 'react';
+import {ItemList} from './ItemList';
+import { data } from '../pages/data';
+import { useParams } from 'react-router-dom';
 
-function ItemListContainer({greetings}) {
+export const ItemListContainer = ({greeting}) => {
+    const [items, setItems] = useState([]);
+    const [loading, setLoading] = useState(true);
 
-    const n = 10;
+    const { catId } = useParams();
 
-    return (
+    useEffect(() => {
+        setLoading(true);
+        const getItems = new Promise((resolve) => {
+            setTimeout(() => {
+                const myData = catId? data.filter((item) => item.categoria === catId): data;
+
+                resolve(myData);
+            }, 2000);
+        });
+
+        getItems
+        .then((res) => {
+            setItems(res);
+        })
+        .finally(() => setLoading(false));
+    }, [catId]);
+
+    return loading ? (
+        <h2>CARGANDO...</h2>
+    ) : (
         <>
-            <main>
-                <div>
-                    {[...Array(n)].map((e, i) => <p key={i}>{greetings}</p>)}
-                    <p>{greetings}</p>
-                    <ItemCount onAdd={() => console.log('Agregado al carrito')} />
-                </div>
-                <div>
-                    <h2>INCENTIA cuenta con amplia gama de productos organicos</h2>
-                    <ItemList list={products} />
-                </div>
-                <div>
-                    <ItemDetailContainer productList={products}/>
-                </div>
-            </main>
+        <h3 style={{ textAlign: 'center' }}>{greeting}</h3>
+        <ItemList items={items}/>
         </>
     )
 }
-
-export default ItemListContainer;
