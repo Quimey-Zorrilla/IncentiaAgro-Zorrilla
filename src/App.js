@@ -1,29 +1,18 @@
 import React from 'react';
-
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-
-import { NavBar } from "./componentes/NavBar";
-import { ItemListContainer } from './componentes/ItemListContainer'
-import { ItemDetailContainer } from "./componentes/ItemDetailContainer";
+import { BrowserRouter } from 'react-router-dom';
+import Header from './componentes/Header';
+import Main from './componentes/Main';
+import Footer from './componentes/Footer';
 
 function App() {
     return (
-        <BrowserRouter>
-            <NavBar/>
-
-            <Routes>
-
-                <Route path="/" element={<ItemListContainer greeting={'HOME'} />} />
-
-                <Route path="/categoria/:catId" element={<ItemListContainer greeting={'PRODUCTOS POR CATEGORIA'} />} />
-
-                <Route path="/producto/:itemId" element={<ItemDetailContainer />} />
-
-                <Route path="*" element={<Navigate to="/" />} />
-
-            </Routes>
-
-        </BrowserRouter>
+        <>
+            <BrowserRouter>
+                <Header/>
+                <Main/>
+                <Footer/>
+            </BrowserRouter>
+        </>
     );
 }
 

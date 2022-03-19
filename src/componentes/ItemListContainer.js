@@ -3,7 +3,7 @@ import {ItemList} from './ItemList';
 import { data } from '../pages/data';
 import { useParams } from 'react-router-dom';
 
-export const ItemListContainer = ({greeting}) => {
+function ItemListContainer ({greeting}) {
     const [items, setItems] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -35,3 +35,5 @@ export const ItemListContainer = ({greeting}) => {
         </>
     )
 }
+
+export default ItemListContainer;

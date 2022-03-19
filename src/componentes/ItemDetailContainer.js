@@ -3,7 +3,7 @@ import { ItemDetail } from './ItemDetail';
 import { data } from '../pages/data';
 import { useParams } from 'react-router-dom';
 
-export const ItemDetailContainer = () => {
+function ItemDetailContainer () {
     const [producto, setProducto] = useState({});
     const [loading, setLoading] = useState(true);
 
