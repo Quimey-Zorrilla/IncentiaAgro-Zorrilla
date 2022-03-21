@@ -142,6 +142,11 @@ main {
     width: 800px;
     margin-left: 18%;
     margin-top: 30px;
+
+    div{
+        display: flex;
+        flex-direction: column;
+    }
     
     section {
         display: flex;
