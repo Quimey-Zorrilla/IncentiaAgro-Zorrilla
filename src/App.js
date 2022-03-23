@@ -3,15 +3,18 @@ import { BrowserRouter } from 'react-router-dom';
 import Header from './componentes/Header';
 import Main from './componentes/Main';
 import Footer from './componentes/Footer';
+import { CartContextProvider } from './componentes/CartContext';
 
 function App() {
     return (
         <>
-            <BrowserRouter>
-                <Header/>
-                <Main/>
-                <Footer/>
-            </BrowserRouter>
+            <CartContextProvider>
+                <BrowserRouter>
+                    <Header/>
+                    <Main/>
+                    <Footer/>
+                </BrowserRouter>
+            </CartContextProvider>
         </>
     );
 }
