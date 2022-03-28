@@ -2,29 +2,29 @@ import { createContext, useState} from 'react';
 
 export const CartContext = createContext()
 
-export const CartContextProvider = ({ children }) => {
+export const CartContextProvider = ({children}) => {
     const [cart, setCart] = useState([])
 
-    const addItem = (producto, cantidad) => {
-        let cartProducto = {producto, cantidad}
+    const addItem = (product, count) => {
+        let cartProduct = {product, count}
 
         let cartAux = []
 
-        if (isInCart(producto)) {
-            cartProducto = cart.find(item => item.producto === producto)
+        if (isInCart(product)) {
+            cartProduct = cart.find(item => item.product === product)
 
-            cartProducto.cantidad = cartProducto.cantidad + cantidad
+            cartProduct.count = cartProduct.count + count
 
             cartAux = [...cart]
         } else {
-            cartAux = [cartProducto, ...cart]
+            cartAux = [cartProduct, ...cart]
         }
         setCart(cartAux)
     };
 
-    const removeItem = (producto) => {
-        if (isInCart(producto)) {
-            const cartAux = cart.filter(item => item.producto !== producto)
+    const removeItem = (product) => {
+        if (isInCart(product)) {
+            const cartAux = cart.filter(item => item.product !== product)
             setCart(cartAux)
         }
     };
@@ -33,19 +33,19 @@ export const CartContextProvider = ({ children }) => {
         setCart([])
     };
 
-    const isInCart = (producto) => {
-        return cart && cart.some(item => item.producto === producto)
+    const isInCart = (product) => {
+        return cart && cart.some(item => item.product === product)
     };
 
+    const valorProvider = {
+        cart,
+        addItem,
+        removeItem,
+        clear
+    }
+
     return(
-        <CartContextProvider 
-        value={{
-            addItem,
-            removeItem,
-            clear,
-            cart
-        }}
-        >
+        <CartContextProvider value={valorProvider}>
             {children}
         </CartContextProvider>
     )

@@ -15,15 +15,16 @@ const ItemCount = ({stock,initial,onAdd}) => {
         }
     }
 
-    //const confirmar = (e) => {
+    const confirmar = (e) => {
         onAdd(contador)
-    //}
+    }
+
     return(
         <div>
             <p>Cantidad actual: {contador}</p>
             <button onClick={aumentar}> + </button>
             <button onClick={disminuir}> - </button>
-            <button onClick={() => onAdd(contador)}> Agregar al carrito </button>
+            <button onClick={confirmar}> Confirmar compra </button>
         </div>
     );
 }
