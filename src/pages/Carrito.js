@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { CartContext } from "../componentes/CartContext";
 
 const Carrito = () => {
-    const {cart, removeItem, clear } = useContext(CartContext)
+    const {cart, removeItem, clear, totalPrice, totalProducts } = useContext(CartContext)
 
     return(
         <>
@@ -20,6 +20,9 @@ const Carrito = () => {
                     )
                 })
             }
+            <p>total: ${totalPrice.value}</p>
+            <p>total: ${totalPrice}</p>
+            <p>Productos en carrito: {totalProducts}</p>
             <button onClick={clear}>Vaciar Carrito</button>
         </>
     )
